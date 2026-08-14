@@ -81,12 +81,14 @@
   .p-artistic .frame-img{background:linear-gradient(150deg,#C6A8FF,#8B5CF6 55%,#5B32B8);}
   .p-architectural .frame-img{background:linear-gradient(150deg,#8FD3E8,#3E9FBF 55%,#20627A);}
   .p-cinematic .frame-img{background:linear-gradient(150deg,#2A2A2A,#5A3A2E 55%,#FF5A1F);}
+  .p-events .frame-img{background:linear-gradient(150deg,#FFE28A,#F2A93B 55%,#C9791A);}
   .gallery-tile.p-street{background-image:linear-gradient(150deg,#FF8A5B,#FF5A1F 55%,#C23E0E);}
   .gallery-tile.p-portraits{background-image:linear-gradient(150deg,#FFB199,#FF6F91 55%,#D6335C);}
   .gallery-tile.p-graduation{background-image:linear-gradient(150deg,#FFE28A,#F2A93B 55%,#C9791A);}
   .gallery-tile.p-artistic{background-image:linear-gradient(150deg,#C6A8FF,#8B5CF6 55%,#5B32B8);}
   .gallery-tile.p-architectural{background-image:linear-gradient(150deg,#8FD3E8,#3E9FBF 55%,#20627A);}
   .gallery-tile.p-cinematic{background-image:linear-gradient(150deg,#2A2A2A,#5A3A2E 55%,#FF5A1F);}
+  .gallery-tile.p-events{background-image:linear-gradient(150deg,#FFE28A,#F2A93B 55%,#C9791A);}
   .v-brand .frame-img{background:linear-gradient(150deg,#FFD08A,#FF9C41 55%,#D9671A);}
   .v-edit .frame-img{background:linear-gradient(150deg,#B7E4C7,#4FAE72 55%,#2A7A4C);}
   .v-doc .frame-img{background:linear-gradient(150deg,#9EC9FF,#4E85E0 55%,#2A55A8);}
@@ -276,18 +278,18 @@
     <div class="tab active" data-filter="all">All</div>
     <div class="tab" data-filter="street">Street</div>
     <div class="tab" data-filter="portraits">Portraits</div>
-    <div class="tab" data-filter="graduation">Graduation</div>
     <div class="tab" data-filter="artistic">Artistic</div>
     <div class="tab" data-filter="architectural">Architectural</div>
     <div class="tab" data-filter="cinematic">Cinematic</div>
+    <div class="tab" data-filter="events">Events</div>
   </div>
   <div class="frames" id="photo-grid">
     <div class="frame reveal p-street clickable" data-cat="street" onclick="openGallery('street')"><div class="frame-img"><span class="frame-tag mono">Street</span></div><div class="frame-body"><h3>Beirut Sidewalks</h3><p>Candid street work — light, gesture and the pace of the city.</p></div></div>
     <div class="frame reveal p-portraits clickable" data-cat="portraits" onclick="openGallery('portraits')"><div class="frame-img"><span class="frame-tag mono">Portraits</span></div><div class="frame-body"><h3>Faces of the City</h3><p>Portrait sessions built around natural light and honest expression.</p></div></div>
-    <div class="frame reveal p-graduation clickable" data-cat="graduation" onclick="openGallery('graduation')"><div class="frame-img"><span class="frame-tag mono">Graduation</span></div><div class="frame-body"><h3>Graduation Photo sessions</h3><p>Flat-rate graduation photography students.</p><span class="mono">@rayanslensventures</span></div></div>
     <div class="frame reveal p-artistic clickable" data-cat="artistic" onclick="openGallery('artistic')"><div class="frame-img"><span class="frame-tag mono">Artistic</span></div><div class="frame-body"><h3>Conceptual Studies</h3><p>Experimental compositions exploring color, form and mood.</p></div></div>
     <div class="frame reveal p-architectural clickable" data-cat="architectural" onclick="openGallery('architectural')"><div class="frame-img"><span class="frame-tag mono">Architectural</span></div><div class="frame-body"><h3>Structures of Beirut</h3><p>Lines, facades and the built texture of the city.</p></div></div>
     <div class="frame reveal p-cinematic clickable" data-cat="cinematic" onclick="openGallery('cinematic')"><div class="frame-img"><span class="frame-tag mono">Cinematic</span></div><div class="frame-body"><h3>Warm Grade Series</h3><p>Cinematically graded stills carrying a film-first color language.</p></div></div>
+    <div class="frame reveal p-events clickable" data-cat="events" onclick="openGallery('events')"><div class="frame-img"><span class="frame-tag mono">Events</span></div><div class="frame-body"><h3>Events</h3><p>Occasion-based sessions — starting with graduation, more to come.</p></div></div>
   </div>
 </section>
 
@@ -443,7 +445,10 @@
   const galleries = {
     street: { title: 'Street Photography', photos: [{},{},{},{},{},{}] },
     portraits: { title: 'Portraits', photos: [{},{},{},{},{},{}] },
-    graduation: { title: 'Graduation Sessions', photos: [{},{},{},{},{},{}] },
+    graduation: { title: 'Graduation', photos: [{},{},{},{},{},{}] },
+    events: { title: 'Events — All Types', shortTitle: 'Events', type: 'nav', photos: [
+      { key: 'graduation', name: 'Graduation', desc: 'Flat-rate graduation photography for AUB students. More event types coming soon.', tint: 'p-events' }
+    ]},
     artistic: { title: 'Artistic', photos: [{},{},{},{},{},{}] },
     architectural: { title: 'Architectural', photos: [{},{},{},{},{},{}] },
     cinematic: { title: 'Cinematic', photos: [{},{},{},{},{},{}] },
@@ -478,7 +483,7 @@
     ]}
   };
 
-  const galleryParent = { mhep: 'aub', clubs: 'aub', outlook: 'aub', osa: 'aub' };
+  const galleryParent = { mhep: 'aub', clubs: 'aub', outlook: 'aub', osa: 'aub', graduation: 'events' };
 
   function openGallery(key){
     const g = galleries[key];

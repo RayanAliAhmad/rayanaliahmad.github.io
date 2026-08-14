@@ -133,8 +133,14 @@
   .svc h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;margin-bottom:0.6rem;}
   .svc p{font-size:0.82rem;line-height:1.55;opacity:0.65;}
   .svc{position:relative;}
-  .svc-cta{display:inline-block;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);opacity:0;transform:translateY(6px);transition:opacity .3s, transform .3s, text-shadow .3s;}
-  .svc:hover .svc-cta, .svc:focus-within .svc-cta{opacity:1;transform:translateY(0);text-shadow:0 0 14px rgba(255,90,31,0.55);}
+  .svc-cta{display:inline-block;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);}
+  @media (hover: hover) and (pointer: fine){
+    .svc-cta{opacity:0;transform:translateY(6px);transition:opacity .3s, transform .3s, text-shadow .3s;}
+    .svc:hover .svc-cta, .svc:focus-within .svc-cta{opacity:1;transform:translateY(0);text-shadow:0 0 14px rgba(255,90,31,0.55);}
+  }
+  @media (hover: none), (pointer: coarse){
+    .svc-cta{opacity:1;margin-top:1rem;display:inline-block;}
+  }
 
   /* ---- contact ---- */
   .contact{display:flex;flex-direction:column;align-items:flex-start;gap:2rem;}

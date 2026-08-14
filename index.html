@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayan A. Ali-Ahmad — Photographer, Videographer & Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-soft:#F6F1E7;
+    --ink:#181816;
+    --ink-soft:#6B6860;
+    --accent:#FF5A1F;
+    --accent-soft:#FFE7DA;
+    --gold:#F2A93B;
+    --line: rgba(24,24,22,0.1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter', sans-serif;overflow-x:hidden;}
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono', monospace;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;}
+  img,.ph{display:block;}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
+    padding:1.3rem 4vw;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;}
+  nav ul{display:flex;gap:1.7rem;list-style:none;flex-wrap:wrap;}
+  nav ul a{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;transition:opacity .2s, color .2s;}
+  nav ul a:hover{opacity:1;color:var(--ink);}
+  @media(max-width:900px){ nav ul{display:none;} }
+
+  /* ---- hero ---- */
+  .hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;padding:6rem 4vw 4rem;position:relative;
+    background:
+      radial-gradient(ellipse at 85% 15%, var(--accent-soft), transparent 55%),
+      radial-gradient(ellipse at 10% 90%, #FFF3DC, transparent 50%),
+      var(--paper);}
+  .hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:1.6rem;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(3.2rem, 9.2vw, 8rem);line-height:0.96;letter-spacing:-0.02em;max-width:16ch;}
+  .hero h1 em{font-style:normal;color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:0.08em;text-underline-offset:0.08em;}
+  .hero-cats{margin-top:1.6rem;font-family:'JetBrains Mono',monospace;font-size:0.95rem;letter-spacing:0.04em;color:var(--ink);font-weight:700;}
+  .hero-sub{display:flex;justify-content:space-between;align-items:flex-end;margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--line);flex-wrap:wrap;gap:1rem;}
+  .hero-sub p{max-width:42ch;font-size:1.02rem;line-height:1.6;opacity:0.75;font-weight:400;}
+  .scroll-cue{font-family:'JetBrains Mono',monospace;font-size:0.68rem;opacity:0.55;}
+
+  /* ---- section shell ---- */
+  section{padding:5.5rem 4vw;position:relative;}
+  .alt{background:var(--paper-soft);}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.4rem;flex-wrap:wrap;gap:1rem;}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-0.01em;}
+  .section-head .mono{opacity:0.55;}
+  .section-intro{max-width:60ch;font-size:1rem;line-height:1.65;opacity:0.72;margin-bottom:2.4rem;margin-top:-1.4rem;}
+
+  /* ---- filter tabs ---- */
+  .tabs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.2rem;}
+  .tab{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.04em;text-transform:uppercase;
+    padding:0.55rem 1rem;border:1px solid var(--line);border-radius:100px;cursor:pointer;background:var(--paper);transition:all .2s;}
+  .tab:hover{border-color:var(--accent);color:var(--ink);}
+  .tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+  /* ---- frame cards ---- */
+  .frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;}
+  .frame{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper);transition:transform .25s, box-shadow .25s;}
+  .frame:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(24,24,22,0.08);}
+  .frame-img{aspect-ratio:4/5;position:relative;overflow:hidden;}
+  .frame-tag{position:absolute;top:0.9rem;left:0.9rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(4px);padding:0.3rem 0.6rem;border-radius:100px;font-size:0.62rem;z-index:2;}
+  .frame-body{padding:1.1rem 1.2rem 1.4rem;}
+  .frame-body h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin-bottom:0.35rem;}
+  .frame-body p{font-size:0.83rem;line-height:1.5;opacity:0.65;}
+  .frame-body .mono{opacity:0.45;margin-top:0.5rem;display:block;}
+
+  /* photo placeholder gradients — bright, distinct per category */
+  .p-street .frame-img{background:linear-gradient(150deg,#FF8A5B,#FF5A1F 55%,#C23E0E);}
+  .p-portraits .frame-img{background:linear-gradient(150deg,#FFB199,#FF6F91 55%,#D6335C);}
+  .p-graduation .frame-img{background:linear-gradient(150deg,#FFE28A,#F2A93B 55%,#C9791A);}
+  .p-artistic .frame-img{background:linear-gradient(150deg,#C6A8FF,#8B5CF6 55%,#5B32B8);}
+  .p-architectural .frame-img{background:linear-gradient(150deg,#8FD3E8,#3E9FBF 55%,#20627A);}
+  .p-cinematic .frame-img{background:linear-gradient(150deg,#2A2A2A,#5A3A2E 55%,#FF5A1F);}
+  .gallery-tile.p-street{background-image:linear-gradient(150deg,#FF8A5B,#FF5A1F 55%,#C23E0E);}
+  .gallery-tile.p-portraits{background-image:linear-gradient(150deg,#FFB199,#FF6F91 55%,#D6335C);}
+  .gallery-tile.p-graduation{background-image:linear-gradient(150deg,#FFE28A,#F2A93B 55%,#C9791A);}
+  .gallery-tile.p-artistic{background-image:linear-gradient(150deg,#C6A8FF,#8B5CF6 55%,#5B32B8);}
+  .gallery-tile.p-architectural{background-image:linear-gradient(150deg,#8FD3E8,#3E9FBF 55%,#20627A);}
+  .gallery-tile.p-cinematic{background-image:linear-gradient(150deg,#2A2A2A,#5A3A2E 55%,#FF5A1F);}
+  .v-brand .frame-img{background:linear-gradient(150deg,#FFD08A,#FF9C41 55%,#D9671A);}
+  .v-edit .frame-img{background:linear-gradient(150deg,#B7E4C7,#4FAE72 55%,#2A7A4C);}
+  .v-doc .frame-img{background:linear-gradient(150deg,#9EC9FF,#4E85E0 55%,#2A55A8);}
+  .ad-1 .frame-img{background:linear-gradient(150deg,#FFC1CC,#FF5A7A 55%,#C21F45);}
+  .ad-2 .frame-img{background:linear-gradient(150deg,#FFE38F,#FFB800 55%,#B87E00);}
+  .ex-0 .frame-img{background:linear-gradient(150deg,#CFE0FF,#5C7CFA 55%,#2A3F8F);}
+  .ex-1 .frame-img{background:linear-gradient(150deg,#F0D9B5,#C89B5C 55%,#7A5A2E);}
+  .ex-2 .frame-img{background:linear-gradient(150deg,#B5D9D0,#5CA894 55%,#2E6B58);}
+  .inst-1 .frame-img{background:linear-gradient(150deg,#FFB199,#FF5A1F 55%,#B8390F);}
+  .inst-2 .frame-img{background:linear-gradient(150deg,#B9C9FF,#5C7CFA 55%,#3450B8);}
+  .inst-3 .frame-img{background:linear-gradient(150deg,#D9C6FF,#A379F2 55%,#6B3FC9);}
+  .inst-4 .frame-img{background:linear-gradient(150deg,#FFE9A8,#F2A93B 55%,#B87A1A);}
+
+  .play-icon{position:absolute;bottom:0.9rem;right:0.9rem;width:34px;height:34px;border-radius:50%;
+    background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;z-index:2;}
+  .play-icon::after{content:'';width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--ink);margin-left:2px;}
+
+  /* ---- about ---- */
+  .about{display:grid;grid-template-columns:0.85fr 1.15fr;gap:4rem;align-items:start;}
+  @media(max-width:800px){.about{grid-template-columns:1fr;}}
+  .about-portrait{aspect-ratio:3/4;border-radius:6px;background:linear-gradient(160deg,#FFD9A0,#FF5A1F 55%,#8B3A12);}
+  .about-copy p{font-size:1.02rem;line-height:1.7;font-weight:400;opacity:0.82;margin-bottom:1.2rem;max-width:58ch;}
+  .about-quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;line-height:1.55;font-weight:400;color:var(--ink);border-left:3px solid var(--accent);padding-left:1.4rem;margin:0 0 2rem;max-width:58ch;}
+  .about-quote cite{display:block;margin-top:0.7rem;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;opacity:0.55;}
+  .about-closer{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;opacity:1;color:var(--ink);margin-top:0.4rem;}
+
+  /* ---- institutional cards ---- */
+  .inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;}
+  .inst-card{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper);}
+  .inst-card .frame-img{aspect-ratio:16/10;}
+  .inst-card .frame-body{padding:1.4rem 1.5rem 1.7rem;}
+  .inst-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;margin-bottom:0.5rem;}
+  .inst-card ul{margin-top:0.9rem;padding-left:1.1rem;font-size:0.85rem;opacity:0.7;line-height:1.7;}
+
+  /* ---- services ---- */
+  .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+  .svc{background:var(--paper);padding:2rem 1.5rem;transition:background .25s;}
+  .svc:hover{background:var(--accent-soft);}
+  .svc .mono{color:var(--ink);opacity:1;margin-bottom:1rem;display:block;}
+  .svc h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;margin-bottom:0.6rem;}
+  .svc p{font-size:0.82rem;line-height:1.55;opacity:0.65;}
+  .svc{position:relative;}
+  .svc-cta{display:inline-block;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);opacity:0;transform:translateY(6px);transition:opacity .3s, transform .3s, text-shadow .3s;}
+  .svc:hover .svc-cta, .svc:focus-within .svc-cta{opacity:1;transform:translateY(0);text-shadow:0 0 14px rgba(255,90,31,0.55);}
+
+  /* ---- contact ---- */
+  .contact{display:flex;flex-direction:column;align-items:flex-start;gap:2rem;}
+  .contact h2{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(2rem,5vw,3.6rem);max-width:16ch;line-height:1.1;}
+  .contact-row{display:flex;gap:3rem;flex-wrap:wrap;width:100%;border-top:1px solid var(--line);padding-top:2rem;margin-top:1rem;}
+  .contact-block .mono{opacity:0.5;margin-bottom:0.5rem;display:block;}
+  .contact-block a, .contact-block span{font-size:1.05rem;}
+  .contact-availability{display:flex;align-items:center;gap:0.5rem;color:var(--accent);opacity:1;margin-top:0.8rem;margin-bottom:1.2rem;font-size:0.75rem;}
+  .contact-block a{border-bottom:1px solid transparent;transition:border-color .2s, color .2s;}
+  .contact-block a:hover{border-color:var(--accent);color:var(--ink);}
+
+  footer{padding:1.6rem 4vw;display:flex;justify-content:space-between;font-size:0.7rem;opacity:0.45;font-family:'JetBrains Mono',monospace;flex-wrap:wrap;gap:0.5rem;border-top:1px solid var(--line);}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .hidden{display:none !important;}
+
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
+
+  .frame.clickable{cursor:pointer;}
+  .frame.clickable:hover .frame-img::after{content:'View collection →';position:absolute;bottom:0.9rem;right:0.9rem;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:0.62rem;padding:0.4rem 0.7rem;border-radius:100px;z-index:2;}
+  .inst-card.clickable{cursor:pointer;transition:transform .25s, box-shadow .25s;}
+  .inst-card.clickable:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(24,24,22,0.08);}
+  .inst-card.clickable:hover .frame-img::after{content:'View all work →';position:absolute;bottom:0.9rem;right:0.9rem;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:0.62rem;padding:0.4rem 0.7rem;border-radius:100px;z-index:2;}
+  .inst-card .frame-img{position:relative;}
+
+  .gallery-tile.inst-1{background-image:linear-gradient(150deg,#FFB199,#FF5A1F 55%,#B8390F);}
+  .gallery-tile.inst-2{background-image:linear-gradient(150deg,#B9C9FF,#5C7CFA 55%,#3450B8);}
+  .gallery-tile.inst-3{background-image:linear-gradient(150deg,#D9C6FF,#A379F2 55%,#6B3FC9);}
+  .gallery-tile.inst-4{background-image:linear-gradient(150deg,#FFE9A8,#F2A93B 55%,#B87A1A);}
+  .gallery-tile.labeled{display:flex;align-items:flex-end;padding:1.1rem;position:relative;}
+  .gallery-tile.labeled::before{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(0,0,0,0.55), transparent 60%);border-radius:6px;}
+  .gallery-tile-text{position:relative;z-index:1;}
+  .gallery-tile-text h4{font-family:'Fraunces',serif;font-weight:500;font-size:1rem;color:#fff;line-height:1.3;margin-bottom:0.3rem;}
+  .gallery-tile-text p{font-size:0.78rem;color:rgba(255,255,255,0.85);line-height:1.4;}
+  .gallery-back{display:block;background:none;border:none;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;padding:0;margin-bottom:0.5rem;}
+  .gallery-back:hover{color:#fff;}
+  .gallery-tile.clickable-tile{cursor:pointer;transition:transform .2s;}
+  .gallery-tile.clickable-tile:hover{transform:translateY(-3px);}
+
+  .gallery-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(24,24,22,0.92);backdrop-filter:blur(6px);padding:5vh 4vw;overflow-y:auto;}
+  .gallery-modal.open{display:block;}
+  .gallery-modal-inner{max-width:1100px;margin:0 auto;}
+  .gallery-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+  .gallery-modal-head h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.9rem;color:var(--paper);}
+  .gallery-close{background:none;border:1px solid rgba(255,255,255,0.3);color:var(--paper);width:40px;height:40px;border-radius:50%;font-size:1.3rem;cursor:pointer;transition:background .2s;}
+  .gallery-close:hover{background:rgba(255,255,255,0.12);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
+  .gallery-tile{aspect-ratio:4/5;border-radius:6px;background-size:cover;background-position:center;}
+
+  /* ---- menu toggle & dashboard overlay ---- */
+  .menu-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:6px;margin-left:1rem;}
+  .menu-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;}
+  .menu-overlay{display:none;position:fixed;inset:0;z-index:110;background:var(--ink);padding:9vh 8vw;}
+  .menu-overlay.open{display:flex;flex-direction:column;justify-content:center;}
+  .menu-overlay-close{position:absolute;top:1.8rem;right:5vw;background:none;border:1px solid rgba(255,255,255,0.3);color:var(--paper);width:42px;height:42px;border-radius:50%;font-size:1.4rem;cursor:pointer;transition:background .2s;}
+  .menu-overlay-close:hover{background:rgba(255,255,255,0.12);}
+  .menu-overlay-list{list-style:none;}
+  .menu-overlay-list li{display:flex;align-items:baseline;gap:1.4rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .menu-overlay-list .mono{color:var(--accent);min-width:2ch;}
+  .menu-overlay-list a{font-family:'Fraunces',serif;font-size:clamp(1.7rem,5.5vw,3.2rem);font-weight:500;color:var(--paper);transition:color .2s;}
+  .menu-overlay-list a:hover{color:var(--accent);}
+
+  /* ---- stats strip ---- */
+  .stats{padding:2.5rem 4vw;border-bottom:1px solid var(--line);}
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;}
+  @media(max-width:800px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+  .stat{display:flex;flex-direction:column;gap:0.4rem;}
+  .stat-num{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,4.5vw,3rem);color:var(--accent);line-height:1;}
+  .stat .mono{opacity:0.6;}
+
+  /* ---- swipeable reel carousel ---- */
+  .reel-carousel{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+  .reel-carousel::-webkit-scrollbar{height:6px;}
+  .reel-carousel::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;}
+  .reel-card{flex:0 0 auto;width:min(78vw, 300px);scroll-snap-align:start;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper);}
+  .reel-card .frame-img{aspect-ratio:4/5;position:relative;overflow:hidden;}
+  .reel-card .frame-body{padding:1.1rem 1.2rem 1.4rem;}
+  .reel-card .frame-body h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin-bottom:0.35rem;}
+  .reel-card .frame-body p{font-size:0.83rem;line-height:1.5;opacity:0.65;}
+  .reel-card .frame-body .mono{opacity:0.45;margin-top:0.5rem;display:block;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="name">Rayan A. Ali-Ahmad</div>
+  <ul>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#videography">Videography</a></li>
+    <li><a href="#ads">Ads</a></li>
+    <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#institutional">Institutional</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span></button>
+</nav>
+
+<div class="menu-overlay" id="menu-overlay">
+  <button class="menu-overlay-close" onclick="toggleMenu()">&times;</button>
+  <ol class="menu-overlay-list">
+    <li><span class="mono">01</span><a href="#photography" onclick="toggleMenu()">Photography</a></li>
+    <li><span class="mono">02</span><a href="#videography" onclick="toggleMenu()">Videography</a></li>
+    <li><span class="mono">03</span><a href="#ads" onclick="toggleMenu()">Ads</a></li>
+    <li><span class="mono">04</span><a href="#exhibitions" onclick="toggleMenu()">Exhibitions</a></li>
+    <li><span class="mono">05</span><a href="#about" onclick="toggleMenu()">About</a></li>
+    <li><span class="mono">06</span><a href="#institutional" onclick="toggleMenu()">Institutional</a></li>
+    <li><span class="mono">07</span><a href="#services" onclick="toggleMenu()">Services</a></li>
+    <li><span class="mono">08</span><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+  </ol>
+</div>
+
+<header class="hero">
+  <div class="hero-tag">Beirut, Lebanon — Photographer · Videographer · Video Editor · Content Creator</div>
+  <h1>Where every <em>frame</em> tells a story.</h1>
+  <div class="hero-cats">Street Photography · Portraits · Documentaries</div>
+  <div class="hero-sub">
+    <p>Capturing streets, faces & stories through photo and film. Finding warmth in every frame, from Beirut and beyond.</p>
+    <div class="scroll-cue">↓ Scroll down to see the world through my lens</div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal"><span class="stat-num" data-target="2.8" data-suffix="M+" data-decimal="1">0</span><span class="mono">Views in Last 15 Days</span></div>
+    <div class="stat reveal"><span class="stat-num" data-target="100" data-suffix="+">0</span><span class="mono">Projects & Collections</span></div>
+    <div class="stat reveal"><span class="stat-num" data-target="10" data-suffix="+">0</span><span class="mono">Institutions & Brands</span></div>
+    <div class="stat reveal"><span class="stat-num" data-target="2020" data-suffix="">0</span><span class="mono">Working Since</span></div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section id="photography">
+  <div class="section-head">
+    <h2>Photography</h2>
+    <span class="mono">6 Categories</span>
+  </div>
+  <div class="tabs" id="photo-tabs">
+    <div class="tab active" data-filter="all">All</div>
+    <div class="tab" data-filter="street">Street</div>
+    <div class="tab" data-filter="portraits">Portraits</div>
+    <div class="tab" data-filter="graduation">Graduation</div>
+    <div class="tab" data-filter="artistic">Artistic</div>
+    <div class="tab" data-filter="architectural">Architectural</div>
+    <div class="tab" data-filter="cinematic">Cinematic</div>
+  </div>
+  <div class="frames" id="photo-grid">
+    <div class="frame reveal p-street clickable" data-cat="street" onclick="openGallery('street')"><div class="frame-img"><span class="frame-tag mono">Street</span></div><div class="frame-body"><h3>Beirut Sidewalks</h3><p>Candid street work — light, gesture and the pace of the city.</p></div></div>
+    <div class="frame reveal p-portraits clickable" data-cat="portraits" onclick="openGallery('portraits')"><div class="frame-img"><span class="frame-tag mono">Portraits</span></div><div class="frame-body"><h3>Faces of the City</h3><p>Portrait sessions built around natural light and honest expression.</p></div></div>
+    <div class="frame reveal p-graduation clickable" data-cat="graduation" onclick="openGallery('graduation')"><div class="frame-img"><span class="frame-tag mono">Graduation</span></div><div class="frame-body"><h3>AUB Graduation Sessions</h3><p>Flat-rate graduation photography for AUB students.</p><span class="mono">@rayanslensventures</span></div></div>
+    <div class="frame reveal p-artistic clickable" data-cat="artistic" onclick="openGallery('artistic')"><div class="frame-img"><span class="frame-tag mono">Artistic</span></div><div class="frame-body"><h3>Conceptual Studies</h3><p>Experimental compositions exploring color, form and mood.</p></div></div>
+    <div class="frame reveal p-architectural clickable" data-cat="architectural" onclick="openGallery('architectural')"><div class="frame-img"><span class="frame-tag mono">Architectural</span></div><div class="frame-body"><h3>Structures of Beirut</h3><p>Lines, facades and the built texture of the city.</p></div></div>
+    <div class="frame reveal p-cinematic clickable" data-cat="cinematic" onclick="openGallery('cinematic')"><div class="frame-img"><span class="frame-tag mono">Cinematic</span></div><div class="frame-body"><h3>Warm Grade Series</h3><p>Cinematically graded stills carrying a film-first color language.</p></div></div>
+  </div>
+</section>
+
+<!-- VIDEOGRAPHY -->
+<section id="videography" class="alt">
+  <div class="section-head">
+    <h2>Videography & Video Editing</h2>
+    <span class="mono">Swipe to explore</span>
+  </div>
+  <div class="reel-carousel">
+    <div class="reel-card v-brand"><div class="frame-img"><span class="frame-tag mono">Video reel</span><div class="play-icon"></div></div><div class="frame-body"><h3>Welcome Reel — Dr. Rim Chehab</h3><p>Interview-led welcome film for AUB's first postdoctoral fellow in social sciences of medicine.</p><span class="mono">MHEP · AUB Faculty of Medicine</span></div></div>
+    <div class="reel-card v-edit"><div class="frame-img"><span class="frame-tag mono">Edit</span><div class="play-icon"></div></div><div class="frame-body"><h3>Field Documentation Cuts</h3><p>Edited footage from field archival work, cut for pace and clarity.</p><span class="mono">South Lebanon Healthcare Archive</span></div></div>
+    <div class="reel-card v-brand"><div class="frame-img"><span class="frame-tag mono">Video reel</span><div class="play-icon"></div></div><div class="frame-body"><h3>Add your next reel</h3><p>Space reserved for your next video or edit.</p></div></div>
+  </div>
+</section>
+
+<!-- ADS -->
+<section id="ads">
+  <div class="section-head">
+    <h2>Ads & Campaign Films</h2>
+    <span class="mono">Filmed Advertisements</span>
+  </div>
+  <p class="section-intro">Add your specific ad clients here — placeholders below reflect the campaign work already on record.</p>
+  <div class="frames">
+    <div class="frame reveal ad-1"><div class="frame-img"><span class="frame-tag mono">Campaign film</span><div class="play-icon"></div></div><div class="frame-body"><h3>Kulluna Lil Watan</h3><p>كلنا للوطن — a video campaign built around poetic narration and original music direction.</p><span class="mono">Ministry of Social Affairs</span></div></div>
+    <div class="frame reveal ad-2"><div class="frame-img"><span class="frame-tag mono">Ad</span><div class="play-icon"></div></div><div class="frame-body"><h3>Add your next campaign</h3><p>Space reserved for your next commercial or brand film.</p></div></div>
+  </div>
+</section>
+
+<!-- EXHIBITIONS -->
+<section id="exhibitions" class="alt">
+  <div class="section-head">
+    <h2>Exhibitions & Press</h2>
+    <span class="mono">Selected & Shown</span>
+  </div>
+  <div class="frames">
+    <div class="frame reveal ex-0"><div class="frame-img"><span class="frame-tag mono">Published photo</span></div><div class="frame-body"><h3>Dahiyeh, Beirut</h3><p>Photograph accompanying Dr. Joelle M. Abi-Rached's article "Millenarian Fantasies" (2026).</p><span class="mono">Boston Review · March 8, 2026</span></div></div>
+    <div class="frame reveal ex-1"><div class="frame-img"><span class="frame-tag mono">Photo essay</span></div><div class="frame-body"><h3>The Echo of the Drone</h3><p>A photo essay on conflict, distance and everyday life.</p><span class="mono">World Congress of Bioethics · Arts & Bioethics Network</span></div></div>
+    <div class="frame reveal ex-2"><div class="frame-img"><span class="frame-tag mono">Street</span></div><div class="frame-body"><h3>Main Character of the Waterfront</h3><p>Portraits of Beirut's coastline and the people who make it theirs.</p><span class="mono">World Congress of Bioethics · Arts & Bioethics Network</span></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="about-portrait reveal"></div>
+    <div class="about-copy">
+      <blockquote class="about-quote reveal">"Film as dream, film as music. No art passes our conscience in the way film does, and goes directly to our feelings, deep down into the dark rooms of our souls."<cite>— Ingmar Bergman</cite></blockquote>
+      <p class="reveal">I'm not interested in the moment someone performs for a lens. I'm interested in the one after, when the guard drops, and what's left is just a face, doing what faces do when no one's watching: aging, doubting, holding something back. That's the only frame worth keeping.</p>
+      <p class="reveal">Beirut is a difficult place to photograph honestly, because it never stops performing either, for tourists, for the news, for itself. So I wait. I wait for the performance to end and the truth to walk in uninvited.</p>
+      <p class="reveal">I'm Rayan A. Ali-Ahmad. I've been doing this for six years, quietly, in rooms most cameras don't enter. The work has been seen, exhibited internationally, published in the Boston Review, watched by more people than I'll ever meet, but none of that is the point. The point is the silence right before someone tells you who they really are.</p>
+      <p class="reveal about-closer">If that's the kind of story you're carrying, bring it to me.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTITUTIONAL -->
+<section id="institutional" class="alt">
+  <div class="section-head">
+    <h2>Institutional Work</h2>
+    <span class="mono">Ministry · AUB</span>
+  </div>
+  <div class="inst-grid">
+    <div class="inst-card reveal clickable" onclick="openGallery('ministry')">
+      <div class="frame-img inst-1"></div>
+      <div class="frame-body">
+        <h3>Ministry of Social Affairs</h3>
+        <p>Media and Communications Assistant, 2026–present.</p>
+        <ul><li>Multimedia production for ministerial events & field visits</li><li>Digital management of official social platforms</li><li>Kulluna Lil Watan (كلنا للوطن) campaign film</li></ul>
+      </div>
+    </div>
+    <div class="inst-card reveal clickable" onclick="openGallery('aub')">
+      <div class="frame-img inst-2"></div>
+      <div class="frame-body">
+        <h3>American University of Beirut</h3>
+        <p>Program Coordinator, student leader and campus media contributor across three divisions.</p>
+        <ul><li>MHEP — Faculty of Medicine</li><li>Office of Student Affairs & Press</li><li>Clubs & Societies</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-head">
+    <h2>Services</h2>
+    <span class="mono">What I Offer</span>
+  </div>
+  <div class="svc-grid">
+    <div class="svc reveal"><span class="mono">01</span><h3>Photography</h3><p>Street, portrait, graduation, artistic and architectural sessions.</p><a href="#contact" class="svc-cta">Contact Me →</a></div>
+    <div class="svc reveal"><span class="mono">02</span><h3>Videography</h3><p>Cinematic video production, from concept to final grade.</p><a href="#contact" class="svc-cta">Contact Me →</a></div>
+    <div class="svc reveal"><span class="mono">03</span><h3>Video Editing</h3><p>Footage editing, color grading and sound design.</p><a href="#contact" class="svc-cta">Contact Me →</a></div>
+    <div class="svc reveal"><span class="mono">04</span><h3>Campaign Films</h3><p>Interview-led and narrated films for institutions and brands.</p><a href="#contact" class="svc-cta">Contact Me →</a></div>
+    <div class="svc reveal"><span class="mono">05</span><h3>Content Creation</h3><p>Social-first photo and video content for brands and personal use.</p><a href="#contact" class="svc-cta">Contact Me →</a></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="reveal">Let's make something worth remembering.</h2>
+  <p class="reveal contact-availability mono">● Open for projects — worldwide</p>
+  <div class="contact-row reveal">
+    <div class="contact-block"><span class="mono">Instagram</span><a href="https://instagram.com/rayanslensventures" target="_blank">@rayanslensventures</a></div>
+    <div class="contact-block"><span class="mono">Email</span><a href="mailto:Rayanaliahmad18@gmail.com">Rayanaliahmad18@gmail.com</a></div>
+    <div class="contact-block"><span class="mono">Phone</span><a href="tel:+96176987090">+961 76 987 090</a></div>
+    <div class="contact-block"><span class="mono">Location</span><span>Beirut, Lebanon</span></div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Rayan A. Ali-Ahmad</span>
+  <span>Photography · Videography · Video Editing · Content Creation</span>
+</footer>
+
+<div class="gallery-modal" id="gallery-modal">
+  <div class="gallery-modal-inner">
+    <div class="gallery-modal-head">
+      <div>
+        <button id="gallery-back" class="gallery-back" style="display:none;"></button>
+        <h3 id="gallery-title"></h3>
+      </div>
+      <button class="gallery-close" onclick="closeGallery()">&times;</button>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</div>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else { e.target.classList.remove('in'); }
+    });
+  }, {threshold:0.05, rootMargin:'0px 0px -3% 0px'});
+  els.forEach(el=>io.observe(el));
+
+  const tabs = document.querySelectorAll('#photo-tabs .tab');
+  const cards = document.querySelectorAll('#photo-grid .frame');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f = tab.dataset.filter;
+      cards.forEach(c=>{
+        c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f);
+      });
+    });
+  });
+
+  // Each category's photo collection — add {src:'images/yourphoto.jpg'} to any entry
+  // once you have real photos; leave src out and it falls back to a placeholder tint.
+  const galleries = {
+    street: { title: 'Street Photography', photos: [{},{},{},{},{},{}] },
+    portraits: { title: 'Portraits', photos: [{},{},{},{},{},{}] },
+    graduation: { title: 'Graduation Sessions', photos: [{},{},{},{},{},{}] },
+    artistic: { title: 'Artistic', photos: [{},{},{},{},{},{}] },
+    architectural: { title: 'Architectural', photos: [{},{},{},{},{},{}] },
+    cinematic: { title: 'Cinematic', photos: [{},{},{},{},{},{}] },
+    ministry: { title: 'Ministry of Social Affairs — All Work', shortTitle: 'Ministry', tint: 'inst-1', photos: [
+      { name: 'Kulluna Lil Watan (كلنا للوطن)', desc: 'Campaign film built around poetic narration and original music direction.' },
+      { name: 'Ministerial Event Coverage', desc: 'Photography and videography for official events and field visits.' },
+      { name: 'Digital & Social Management', desc: 'Managing official social platforms for the Minister and Ministry.' }
+    ]},
+    aub: { title: 'American University of Beirut — All Work', shortTitle: 'AUB', type: 'nav', photos: [
+      { key: 'mhep', name: 'MHEP — Faculty of Medicine', desc: 'Program Coordinator, Medical History, Ethics & Politics, 2025–present.', tint: 'inst-2' },
+      { key: 'press', name: 'Office of Student Affairs & Press', desc: 'Outlook Newspaper and OSA Communications Office.', tint: 'inst-4' },
+      { key: 'clubs', name: 'Clubs & Societies', desc: 'Founder and leader across AUB student life.', tint: 'inst-3' }
+    ]},
+    mhep: { title: 'MHEP — AUB Faculty of Medicine — All Work', tint: 'inst-2', photos: [
+      { name: 'Welcome Reel — Dr. Rim Chehab', desc: "Interview-led welcome film for AUB's first postdoctoral fellow in social sciences of medicine." },
+      { name: 'South Lebanon Healthcare Infrastructure Archival Project', desc: 'Field-lead visual documentation of a healthcare archival project.' }
+    ]},
+    clubs: { title: 'AUB Clubs & Societies — All Work', tint: 'inst-3', photos: [
+      { name: 'AUB Medical Humanities Society', desc: 'Co-Founder & President — bridging healthcare, humanistic inquiry and the arts.' },
+      { name: 'AUB Photography Club', desc: 'Founder & President — a platform for students to explore and showcase photography.' },
+      { name: "Psychology Students' Society", desc: 'President — leading events, mentorship programs and student engagement.' },
+      { name: 'AUB Film Club', desc: 'Founding Cabinet Member & Secretary.' }
+    ]},
+    press: { title: 'Office of Student Affairs & Press — All Work', tint: 'inst-4', photos: [
+      { name: 'Outlook Newspaper — Videographer & Photographer', desc: 'Photo and video coverage for AUB campus news, 2024–present.' },
+      { name: 'Outlook Newspaper — Staff Writer', desc: 'Ten published articles across regional, local and international topics.' },
+      { name: 'OSA Communications Office', desc: "Content creator across AUB's official communication channels." }
+    ]}
+  };
+
+  const galleryParent = { mhep: 'aub', clubs: 'aub', press: 'aub' };
+
+  function openGallery(key){
+    const g = galleries[key];
+    if(!g) return;
+    document.getElementById('gallery-title').textContent = g.title;
+    const backBtn = document.getElementById('gallery-back');
+    const parentKey = galleryParent[key];
+    if(parentKey && galleries[parentKey]){
+      backBtn.style.display = 'block';
+      backBtn.textContent = '← Back to ' + galleries[parentKey].shortTitle;
+      backBtn.onclick = ()=>openGallery(parentKey);
+    } else {
+      backBtn.style.display = 'none';
+    }
+    const grid = document.getElementById('gallery-grid');
+    grid.innerHTML = '';
+    g.photos.forEach(p=>{
+      const tile = document.createElement('div');
+      const tintClass = p.tint || g.tint || ('p-' + key);
+      tile.className = 'gallery-tile ' + tintClass;
+      if(p.src){ tile.style.backgroundImage = "url('" + p.src + "')"; }
+      if(p.name){
+        tile.classList.add('labeled');
+        tile.innerHTML = '<div class="gallery-tile-text"><h4>' + p.name + '</h4><p>' + (p.desc || '') + '</p></div>';
+      }
+      if(g.type === 'nav' && p.key){
+        tile.classList.add('clickable-tile');
+        tile.onclick = ()=>openGallery(p.key);
+      }
+      grid.appendChild(tile);
+    });
+    document.getElementById('gallery-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGallery(){
+    document.getElementById('gallery-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('gallery-modal').addEventListener('click', (e)=>{
+    if(e.target.id === 'gallery-modal') closeGallery();
+  });
+
+  function toggleMenu(){
+    const overlay = document.getElementById('menu-overlay');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // Animated stat counters — fire once when the strip scrolls into view
+  const statEls = document.querySelectorAll('.stat-num');
+  const statIO = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const decimals = parseInt(el.dataset.decimal || '0', 10);
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now){
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = target * eased;
+          el.textContent = (decimals > 0 ? value.toFixed(decimals) : Math.round(value)) + suffix;
+          if(progress < 1){ requestAnimationFrame(tick); }
+        }
+        requestAnimationFrame(tick);
+        statIO.unobserve(el);
+      }
+    });
+  }, {threshold:0.4});
+  statEls.forEach(el=>statIO.observe(el));
+</script>
+
+</body>
+</html>

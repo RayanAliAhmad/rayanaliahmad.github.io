@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayan Ali-Ahmad — Photographer, Videographer & Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-soft:#F6F1E7;
+    --ink:#181816;
+    --ink-soft:#6B6860;
+    --accent:#FF5A1F;
+    --accent-soft:#FFE7DA;
+    --gold:#F2A93B;
+    --line: rgba(24,24,22,0.1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter', sans-serif;overflow-x:hidden;}
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono', monospace;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;}
+  img,.ph{display:block;}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
+    padding:1.3rem 4vw;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;}
+  nav ul{display:flex;gap:1.7rem;list-style:none;flex-wrap:wrap;}
+  nav ul a{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;transition:opacity .2s, color .2s;}
+  nav ul a:hover{opacity:1;color:var(--ink);}
+  @media(max-width:900px){ nav ul{display:none;} }
+
+  /* ---- hero ---- */
+  .hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;padding:6rem 4vw 4rem;position:relative;
+    background:
+      radial-gradient(ellipse at 85% 15%, var(--accent-soft), transparent 55%),
+      radial-gradient(ellipse at 10% 90%, #FFF3DC, transparent 50%),
+      var(--paper);}
+  .hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;opacity:0.6;margin-bottom:1.6rem;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(3.2rem, 9.2vw, 8rem);line-height:0.96;letter-spacing:-0.02em;max-width:16ch;}
+  .hero h1 em{font-style:normal;color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:0.08em;text-underline-offset:0.08em;}
+  .hero-cats{margin-top:1.6rem;font-family:'JetBrains Mono',monospace;font-size:0.95rem;letter-spacing:0.04em;color:var(--ink);font-weight:700;}
+  .hero-sub{display:flex;justify-content:space-between;align-items:flex-end;margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--line);flex-wrap:wrap;gap:1rem;}
+  .hero-sub p{max-width:42ch;font-size:1.02rem;line-height:1.6;opacity:0.75;font-weight:400;}
+  .scroll-cue{font-family:'JetBrains Mono',monospace;font-size:0.68rem;opacity:0.55;}
+
+  /* ---- section shell ---- */
+  section{padding:5.5rem 4vw;position:relative;}
+  .alt{background:var(--paper-soft);}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.4rem;flex-wrap:wrap;gap:1rem;}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-0.01em;}
+  .section-head .mono{opacity:0.55;}
+  .section-intro{max-width:60ch;font-size:1rem;line-height:1.65;opacity:0.72;margin-bottom:2.4rem;margin-top:-1.4rem;}
+
+  /* ---- filter tabs ---- */
+  .tabs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.2rem;}
+  .tab{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.04em;text-transform:uppercase;
+    padding:0.55rem 1rem;border:1px solid var(--line);border-radius:100px;cursor:pointer;background:var(--paper);transition:all .2s;}
+  .tab:hover{border-color:var(--accent);color:var(--ink);}
+  .tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+  /* ---- frame cards ---- */
+  .frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;}
+  .frame{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper);transition:transform .25s, box-shadow .25s;}
+  .frame:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(24,24,22,0.08);}
+  .frame-img{aspect-ratio:4/5;position:relative;overflow:hidden;}
+  .frame-tag{position:absolute;top:0.9rem;left:0.9rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(4px);padding:0.3rem 0.6rem;border-radius:100px;font-size:0.62rem;z-index:2;}
+  .frame-body{padding:1.1rem 1.2rem 1.4rem;}
+  .frame-body h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin-bottom:0.35rem;}
+  .frame-body p{font-size:0.83rem;line-height:1.5;opacity:0.65;}
+  .frame-body .mono{opacity:0.45;margin-top:0.5rem;display:block;}
+
+  /* photo placeholder gradients — bright, distinct per category */
+  .p-street .frame-img{background:linear-gradient(150deg,#FF8A5B,#FF5A1F 55%,#C23E0E);}
+  .p-portraits .frame-img{background:linear-gradient(150deg,#FFB199,#FF6F91 55%,#D6335C);}
+  .p-graduation .frame-img{background:linear-gradient(150deg,#FFE28A,#F2A93B 55%,#C9791A);}
+  .p-artistic .frame-img{background:linear-gradient(150deg,#C6A8FF,#8B5CF6 55%,#5B32B8);}
+  .p-architectural .frame-img{background:linear-gradient(150deg,#8FD3E8,#3E9FBF 55%,#20627A);}
+  .p-cinematic .frame-img{background:linear-gradient(150deg,#2A2A2A,#5A3A2E 55%,#FF5A1F);}
+  .v-brand .frame-img{background:linear-gradient(150deg,#FFD08A,#FF9C41 55%,#D9671A);}
+  .v-edit .frame-img{background:linear-gradient(150deg,#B7E4C7,#4FAE72 55%,#2A7A4C);}
+  .v-doc .frame-img{background:linear-gradient(150deg,#9EC9FF,#4E85E0 55%,#2A55A8);}
+  .ad-1 .frame-img{background:linear-gradient(150deg,#FFC1CC,#FF5A7A 55%,#C21F45);}
+  .ad-2 .frame-img{background:linear-gradient(150deg,#FFE38F,#FFB800 55%,#B87E00);}
+  .ex-0 .frame-img{background:linear-gradient(150deg,#CFE0FF,#5C7CFA 55%,#2A3F8F);}
+  .ex-1 .frame-img{background:linear-gradient(150deg,#F0D9B5,#C89B5C 55%,#7A5A2E);}
+  .ex-2 .frame-img{background:linear-gradient(150deg,#B5D9D0,#5CA894 55%,#2E6B58);}
+  .inst-1 .frame-img{background:linear-gradient(150deg,#FFB199,#FF5A1F 55%,#B8390F);}
+  .inst-2 .frame-img{background:linear-gradient(150deg,#B9C9FF,#5C7CFA 55%,#3450B8);}
+  .inst-3 .frame-img{background:linear-gradient(150deg,#D9C6FF,#A379F2 55%,#6B3FC9);}
+  .inst-4 .frame-img{background:linear-gradient(150deg,#FFE9A8,#F2A93B 55%,#B87A1A);}
+
+  .play-icon{position:absolute;bottom:0.9rem;right:0.9rem;width:34px;height:34px;border-radius:50%;
+    background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;z-index:2;}
+  .play-icon::after{content:'';width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--ink);margin-left:2px;}
+
+  /* ---- about ---- */
+  .about{display:grid;grid-template-columns:0.85fr 1.15fr;gap:4rem;align-items:start;}
+  @media(max-width:800px){.about{grid-template-columns:1fr;}}
+  .about-portrait{aspect-ratio:3/4;border-radius:6px;background:linear-gradient(160deg,#FFD9A0,#FF5A1F 55%,#8B3A12);}
+  .about-copy p{font-size:1.02rem;line-height:1.7;font-weight:400;opacity:0.82;margin-bottom:1.2rem;max-width:58ch;}
+  .about-copy p:first-child{font-family:'Fraunces',serif;font-style:italic;font-size:1.35rem;font-weight:400;opacity:1;line-height:1.5;color:var(--ink);}
+
+  /* ---- institutional cards ---- */
+  .inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;}
+  .inst-card{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper);}
+  .inst-card .frame-img{aspect-ratio:16/10;}
+  .inst-card .frame-body{padding:1.4rem 1.5rem 1.7rem;}
+  .inst-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;margin-bottom:0.5rem;}
+  .inst-card ul{margin-top:0.9rem;padding-left:1.1rem;font-size:0.85rem;opacity:0.7;line-height:1.7;}
+
+  /* ---- services ---- */
+  .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+  .svc{background:var(--paper);padding:2rem 1.5rem;transition:background .25s;}
+  .svc:hover{background:var(--accent-soft);}
+  .svc .mono{color:var(--ink);opacity:1;margin-bottom:1rem;display:block;}
+  .svc h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;margin-bottom:0.6rem;}
+  .svc p{font-size:0.82rem;line-height:1.55;opacity:0.65;}
+
+  /* ---- contact ---- */
+  .contact{display:flex;flex-direction:column;align-items:flex-start;gap:2rem;}
+  .contact h2{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(2rem,5vw,3.6rem);max-width:16ch;line-height:1.1;}
+  .contact-row{display:flex;gap:3rem;flex-wrap:wrap;width:100%;border-top:1px solid var(--line);padding-top:2rem;margin-top:1rem;}
+  .contact-block .mono{opacity:0.5;margin-bottom:0.5rem;display:block;}
+  .contact-block a, .contact-block span{font-size:1.05rem;}
+  .contact-block a{border-bottom:1px solid transparent;transition:border-color .2s, color .2s;}
+  .contact-block a:hover{border-color:var(--accent);color:var(--ink);}
+
+  footer{padding:1.6rem 4vw;display:flex;justify-content:space-between;font-size:0.7rem;opacity:0.45;font-family:'JetBrains Mono',monospace;flex-wrap:wrap;gap:0.5rem;border-top:1px solid var(--line);}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .hidden{display:none !important;}
+
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="name">Rayan Ali-Ahmad</div>
+  <ul>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#videography">Videography</a></li>
+    <li><a href="#ads">Ads</a></li>
+    <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#institutional">Institutional</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag">Beirut, Lebanon — Photographer · Videographer · Video Editor · Content Creator</div>
+  <h1>Where every <em>frame</em> tells a story.</h1>
+  <div class="hero-cats">Street Photography · Portraits · Documentaries</div>
+  <div class="hero-sub">
+    <p>Capturing streets, faces & stories through photo and film. Finding warmth in every frame, from Beirut and beyond.</p>
+    <div class="scroll-cue">↓ Scroll down to see the world through my lens</div>
+  </div>
+</header>
+
+<!-- PHOTOGRAPHY -->
+<section id="photography">
+  <div class="section-head">
+    <h2>Photography</h2>
+    <span class="mono">6 Categories</span>
+  </div>
+  <div class="tabs" id="photo-tabs">
+    <div class="tab active" data-filter="all">All</div>
+    <div class="tab" data-filter="street">Street</div>
+    <div class="tab" data-filter="portraits">Portraits</div>
+    <div class="tab" data-filter="graduation">Graduation</div>
+    <div class="tab" data-filter="artistic">Artistic</div>
+    <div class="tab" data-filter="architectural">Architectural</div>
+    <div class="tab" data-filter="cinematic">Cinematic</div>
+  </div>
+  <div class="frames" id="photo-grid">
+    <div class="frame reveal p-street" data-cat="street"><div class="frame-img"><span class="frame-tag mono">Street</span></div><div class="frame-body"><h3>Beirut Sidewalks</h3><p>Candid street work — light, gesture and the pace of the city.</p></div></div>
+    <div class="frame reveal p-portraits" data-cat="portraits"><div class="frame-img"><span class="frame-tag mono">Portraits</span></div><div class="frame-body"><h3>Faces of the City</h3><p>Portrait sessions built around natural light and honest expression.</p></div></div>
+    <div class="frame reveal p-graduation" data-cat="graduation"><div class="frame-img"><span class="frame-tag mono">Graduation</span></div><div class="frame-body"><h3>AUB Graduation Sessions</h3><p>Flat-rate graduation photography for AUB students.</p><span class="mono">@rayanslensventures</span></div></div>
+    <div class="frame reveal p-artistic" data-cat="artistic"><div class="frame-img"><span class="frame-tag mono">Artistic</span></div><div class="frame-body"><h3>Conceptual Studies</h3><p>Experimental compositions exploring color, form and mood.</p></div></div>
+    <div class="frame reveal p-architectural" data-cat="architectural"><div class="frame-img"><span class="frame-tag mono">Architectural</span></div><div class="frame-body"><h3>Structures of Beirut</h3><p>Lines, facades and the built texture of the city.</p></div></div>
+    <div class="frame reveal p-architectural" data-cat="architectural"><div class="frame-img"><span class="frame-tag mono">Real estate</span></div><div class="frame-body"><h3>Property Photography</h3><p>Real estate imagery shot to promote listings with accuracy and appeal.</p><span class="mono">Trendy Estate</span></div></div>
+    <div class="frame reveal p-cinematic" data-cat="cinematic"><div class="frame-img"><span class="frame-tag mono">Cinematic</span></div><div class="frame-body"><h3>Warm Grade Series</h3><p>Cinematically graded stills carrying a film-first color language.</p></div></div>
+  </div>
+</section>
+
+<!-- VIDEOGRAPHY -->
+<section id="videography" class="alt">
+  <div class="section-head">
+    <h2>Videography & Video Editing</h2>
+    <span class="mono">Reels & Edits</span>
+  </div>
+  <div class="frames">
+    <div class="frame reveal v-brand"><div class="frame-img"><span class="frame-tag mono">Video reel</span><div class="play-icon"></div></div><div class="frame-body"><h3>Welcome Reel — Dr. Rim Chehab</h3><p>Interview-led welcome film for AUB's first postdoctoral fellow in social sciences of medicine.</p><span class="mono">MHEP · AUB Faculty of Medicine</span></div></div>
+    <div class="frame reveal v-doc"><div class="frame-img"><span class="frame-tag mono">AI film</span><div class="play-icon"></div></div><div class="frame-body"><h3>El Sabbah</h3><p>An original Beirut-inspired hero, built as an AI-generated reel using Veo, Kling and Pika.</p><span class="mono">Independent</span></div></div>
+    <div class="frame reveal v-edit"><div class="frame-img"><span class="frame-tag mono">Edit</span><div class="play-icon"></div></div><div class="frame-body"><h3>Field Documentation Cuts</h3><p>Edited footage from field archival work, cut for pace and clarity.</p><span class="mono">South Lebanon Healthcare Archive</span></div></div>
+  </div>
+</section>
+
+<!-- ADS -->
+<section id="ads">
+  <div class="section-head">
+    <h2>Ads & Campaign Films</h2>
+    <span class="mono">Filmed Advertisements</span>
+  </div>
+  <p class="section-intro">Add your specific ad clients here — placeholders below reflect the campaign work already on record.</p>
+  <div class="frames">
+    <div class="frame reveal ad-1"><div class="frame-img"><span class="frame-tag mono">Campaign film</span><div class="play-icon"></div></div><div class="frame-body"><h3>Kulluna Lil Watan</h3><p>كلنا للوطن — a video campaign built around poetic narration and original music direction.</p><span class="mono">Ministry of Social Affairs</span></div></div>
+    <div class="frame reveal ad-2"><div class="frame-img"><span class="frame-tag mono">Ad</span><div class="play-icon"></div></div><div class="frame-body"><h3>Add your next campaign</h3><p>Space reserved for your next commercial or brand film.</p></div></div>
+  </div>
+</section>
+
+<!-- EXHIBITIONS -->
+<section id="exhibitions" class="alt">
+  <div class="section-head">
+    <h2>Exhibitions & Press</h2>
+    <span class="mono">Selected & Shown</span>
+  </div>
+  <div class="frames">
+    <div class="frame reveal ex-0"><div class="frame-img"><span class="frame-tag mono">Published photo</span></div><div class="frame-body"><h3>Dahiyeh, Beirut</h3><p>Photograph accompanying Dr. Joelle M. Abi-Rached's article "Millenarian Fantasies" (2026).</p><span class="mono">Boston Review · March 8, 2026</span></div></div>
+    <div class="frame reveal ex-1"><div class="frame-img"><span class="frame-tag mono">Photo essay</span></div><div class="frame-body"><h3>The Echo of the Drone</h3><p>A photo essay on conflict, distance and everyday life.</p><span class="mono">World Congress of Bioethics · Arts & Bioethics Network</span></div></div>
+    <div class="frame reveal ex-2"><div class="frame-img"><span class="frame-tag mono">Street</span></div><div class="frame-body"><h3>Main Character of the Waterfront</h3><p>Portraits of Beirut's coastline and the people who make it theirs.</p><span class="mono">World Congress of Bioethics · Arts & Bioethics Network</span></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="about-portrait reveal"></div>
+    <div class="about-copy">
+      <p class="reveal">I make images that sit close to their subject — warm, unhurried, a little cinematic.</p>
+      <p class="reveal">I'm Rayan Ali-Ahmad, a photographer, videographer, video editor and content creator based in Beirut, Lebanon. I capture streets, faces and stories through photo and film — finding warmth in every frame, from Beirut and beyond. My work has produced videos reaching over <strong>30M views</strong>, and I've been recognized with AUB's Distinction in Student Life Award and a Video Production Award from the EAA Speak Up Competition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTITUTIONAL -->
+<section id="institutional" class="alt">
+  <div class="section-head">
+    <h2>Institutional Work</h2>
+    <span class="mono">Ministry · MHEP · AUB</span>
+  </div>
+  <div class="inst-grid">
+    <div class="inst-card reveal">
+      <div class="frame-img inst-1"></div>
+      <div class="frame-body">
+        <h3>Ministry of Social Affairs</h3>
+        <p>Media and Communications Assistant, 2026–present.</p>
+        <ul><li>Multimedia production for ministerial events & field visits</li><li>Digital management of official social platforms</li><li>Kulluna Lil Watan (كلنا للوطن) campaign film</li></ul>
+      </div>
+    </div>
+    <div class="inst-card reveal">
+      <div class="frame-img inst-2"></div>
+      <div class="frame-body">
+        <h3>MHEP — AUB Faculty of Medicine</h3>
+        <p>Program Coordinator, Medical History, Ethics & Politics, 2025–present.</p>
+        <ul><li>Welcome Reel — Dr. Rim Chehab</li><li>South Lebanon Healthcare Infrastructure Archival Project</li></ul>
+      </div>
+    </div>
+    <div class="inst-card reveal">
+      <div class="frame-img inst-3"></div>
+      <div class="frame-body">
+        <h3>AUB Clubs & Societies</h3>
+        <p>Founder and leader across AUB student life.</p>
+        <ul><li>Co-Founder & President, AUB Medical Humanities Society</li><li>Founder & President, AUB Photography Club</li><li>President, Psychology Students' Society</li><li>Founding Cabinet Member, AUB Film Club</li></ul>
+      </div>
+    </div>
+    <div class="inst-card reveal">
+      <div class="frame-img inst-4"></div>
+      <div class="frame-body">
+        <h3>Press & Campus Media</h3>
+        <p>Outlook Newspaper (AUB) and Office of Student Affairs.</p>
+        <ul><li>Videographer & Photographer, Outlook Newspaper, 2024–present</li><li>Staff Writer, Outlook Newspaper, 2022–present</li><li>Content Creator, OSA Communications Office, 2023–present</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-head">
+    <h2>Services</h2>
+    <span class="mono">What I Offer</span>
+  </div>
+  <div class="svc-grid">
+    <div class="svc reveal"><span class="mono">01</span><h3>Photography</h3><p>Street, portrait, graduation, artistic and architectural sessions.</p></div>
+    <div class="svc reveal"><span class="mono">02</span><h3>Videography</h3><p>Cinematic video production, from concept to final grade.</p></div>
+    <div class="svc reveal"><span class="mono">03</span><h3>Video Editing</h3><p>Footage editing, color grading and sound design.</p></div>
+    <div class="svc reveal"><span class="mono">04</span><h3>Campaign Films</h3><p>Interview-led and narrated films for institutions and brands.</p></div>
+    <div class="svc reveal"><span class="mono">05</span><h3>Content Creation</h3><p>Social-first photo and video content for brands and personal use.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="reveal">Let's make something worth remembering.</h2>
+  <div class="contact-row reveal">
+    <div class="contact-block"><span class="mono">Instagram</span><a href="https://instagram.com/rayanslensventures" target="_blank">@rayanslensventures</a></div>
+    <div class="contact-block"><span class="mono">Email</span><a href="mailto:hello@example.com">hello@example.com</a></div>
+    <div class="contact-block"><span class="mono">Location</span><span>Beirut, Lebanon</span></div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Rayan Ali-Ahmad</span>
+  <span>Photography · Videography · Video Editing · Content Creation</span>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  els.forEach(el=>io.observe(el));
+
+  const tabs = document.querySelectorAll('#photo-tabs .tab');
+  const cards = document.querySelectorAll('#photo-grid .frame');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f = tab.dataset.filter;
+      cards.forEach(c=>{
+        c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

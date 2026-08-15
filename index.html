@@ -130,6 +130,8 @@
   .pub-title{font-family:'Fraunces',serif;font-size:1.08rem;font-weight:500;color:var(--ink);transition:color .2s;}
   .pub-meta{opacity:0.5;white-space:nowrap;}
   .pub-list a:hover .pub-title{color:var(--accent);}
+  .pub-readmore{display:inline-block;margin-top:2rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:0.2rem;transition:opacity .2s;}
+  .pub-readmore:hover{opacity:0.7;}
 
   /* ---- services ---- */
   .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
@@ -241,7 +243,7 @@
     <li><a href="#videography">Videography</a></li>
     <li><a href="#ads">Ads</a></li>
     <li><a href="#exhibitions">Exhibitions</a></li>
-    <li><a href="#publications">Publications</a></li>
+    <li><a href="publications.html">Publications</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#institutional">Institutional</a></li>
     <li><a href="#services">Services</a></li>
@@ -257,7 +259,7 @@
     <li><span class="mono">02</span><a href="#videography" onclick="toggleMenu()">Videography</a></li>
     <li><span class="mono">03</span><a href="#ads" onclick="toggleMenu()">Ads</a></li>
     <li><span class="mono">04</span><a href="#exhibitions" onclick="toggleMenu()">Exhibitions</a></li>
-    <li><span class="mono">05</span><a href="#publications" onclick="toggleMenu()">Publications</a></li>
+    <li><span class="mono">05</span><a href="publications.html">Publications</a></li>
     <li><span class="mono">06</span><a href="#about" onclick="toggleMenu()">About</a></li>
     <li><span class="mono">07</span><a href="#institutional" onclick="toggleMenu()">Institutional</a></li>
     <li><span class="mono">08</span><a href="#services" onclick="toggleMenu()">Services</a></li>
@@ -348,19 +350,6 @@
   </div>
 </section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="section-head">
-    <h2>Publications</h2>
-    <span class="mono">Selected Writing</span>
-  </div>
-  <ul class="pub-list">
-    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
-    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
-    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
-  </ul>
-</section>
-
 <!-- ABOUT -->
 <section id="about">
   <div class="about">
@@ -373,6 +362,20 @@
       <p class="reveal about-closer">If that's the kind of story you're carrying, bring it to me.</p>
     </div>
   </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="alt">
+  <div class="section-head">
+    <h2>Publications</h2>
+    <span class="mono">Selected Writing</span>
+  </div>
+  <ul class="pub-list">
+    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
+    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
+    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
+  </ul>
+  <a href="publications.html" class="pub-readmore reveal">Read all publications →</a>
 </section>
 
 <!-- INSTITUTIONAL -->

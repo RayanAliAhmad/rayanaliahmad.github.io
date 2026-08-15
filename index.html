@@ -123,6 +123,14 @@
   .inst-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;margin-bottom:0.5rem;}
   .inst-card ul{margin-top:0.9rem;padding-left:1.1rem;font-size:0.85rem;opacity:0.7;line-height:1.7;}
 
+  /* ---- publications list ---- */
+  .pub-list{list-style:none;max-width:760px;}
+  .pub-list li{border-bottom:1px solid var(--line);}
+  .pub-list a{display:flex;justify-content:space-between;align-items:baseline;gap:1.2rem;flex-wrap:wrap;padding:1.15rem 0;transition:opacity .2s;}
+  .pub-title{font-family:'Fraunces',serif;font-size:1.08rem;font-weight:500;color:var(--ink);transition:color .2s;}
+  .pub-meta{opacity:0.5;white-space:nowrap;}
+  .pub-list a:hover .pub-title{color:var(--accent);}
+
   /* ---- services ---- */
   .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
   @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
@@ -233,6 +241,7 @@
     <li><a href="#videography">Videography</a></li>
     <li><a href="#ads">Ads</a></li>
     <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#institutional">Institutional</a></li>
     <li><a href="#services">Services</a></li>
@@ -248,10 +257,11 @@
     <li><span class="mono">02</span><a href="#videography" onclick="toggleMenu()">Videography</a></li>
     <li><span class="mono">03</span><a href="#ads" onclick="toggleMenu()">Ads</a></li>
     <li><span class="mono">04</span><a href="#exhibitions" onclick="toggleMenu()">Exhibitions</a></li>
-    <li><span class="mono">05</span><a href="#about" onclick="toggleMenu()">About</a></li>
-    <li><span class="mono">06</span><a href="#institutional" onclick="toggleMenu()">Institutional</a></li>
-    <li><span class="mono">07</span><a href="#services" onclick="toggleMenu()">Services</a></li>
-    <li><span class="mono">08</span><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+    <li><span class="mono">05</span><a href="#publications" onclick="toggleMenu()">Publications</a></li>
+    <li><span class="mono">06</span><a href="#about" onclick="toggleMenu()">About</a></li>
+    <li><span class="mono">07</span><a href="#institutional" onclick="toggleMenu()">Institutional</a></li>
+    <li><span class="mono">08</span><a href="#services" onclick="toggleMenu()">Services</a></li>
+    <li><span class="mono">09</span><a href="#contact" onclick="toggleMenu()">Contact</a></li>
   </ol>
 </div>
 
@@ -336,6 +346,19 @@
     <div class="frame reveal ex-1"><div class="frame-img"><span class="frame-tag mono">Photo essay</span></div><div class="frame-body"><h3>The Echo of the Drone</h3><p>A photo essay on conflict, distance and everyday life.</p><span class="mono">World Congress of Bioethics · Arts & Bioethics Network</span></div></div>
     <div class="frame reveal ex-2"><div class="frame-img"><span class="frame-tag mono">Street</span></div><div class="frame-body"><h3>Main Character of the Waterfront</h3><p>Portraits of Beirut's coastline and the people who make it theirs.</p><span class="mono">World Congress of Bioethics · Arts & Bioethics Network</span></div></div>
   </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-head">
+    <h2>Publications</h2>
+    <span class="mono">Selected Writing</span>
+  </div>
+  <ul class="pub-list">
+    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
+    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
+    <li class="reveal"><a href="#" target="_blank" rel="noopener"><span class="pub-title">Add your article title here</span><span class="mono pub-meta">Outlet · Month Year</span></a></li>
+  </ul>
 </section>
 
 <!-- ABOUT -->
@@ -466,7 +489,7 @@
     aub: { title: 'American University of Beirut — All Work', shortTitle: 'AUB', type: 'nav', photos: [
       { key: 'mhep', name: 'MHEP — Faculty of Medicine', desc: 'Program Coordinator, Medical History, Ethics & Politics, 2025–present.', tint: 'inst-2' },
       { key: 'clubs', name: 'Student Activities', desc: 'Founder and leader across AUB clubs, societies and outdoor life.', tint: 'inst-3' },
-      { key: 'outlook', name: 'Outlook Newspaper', desc: "Staff writer, videographer and photographer for AUB's campus newspaper.", tint: 'inst-4' },
+      { key: 'outlook', name: 'Outlook Newspaper', desc: "Videographer and photographer for AUB's campus newspaper.", tint: 'inst-4' },
       { key: 'osa', name: 'Office of Student Affairs', desc: "Content Creator for AUB's OSA Communications Office.", tint: 'inst-1' }
     ]},
     mhep: { title: 'MHEP — AUB Faculty of Medicine — All Work', tint: 'inst-2', photos: [
@@ -481,8 +504,7 @@
       { name: 'AUB Outdoors', desc: 'Sub-team Leader, Photography — documenting outdoor excursions and activities.' }
     ]},
     outlook: { title: 'Outlook Newspaper — All Work', tint: 'inst-4', photos: [
-      { name: 'Videographer & Photographer', desc: 'Photo and video coverage for AUB campus news, 2024–present.' },
-      { name: 'Staff Writer', desc: 'Ten published articles across regional, local and international topics, 2022–present.' }
+      { name: 'Videographer & Photographer', desc: 'Photo and video coverage for AUB campus news, 2024–present.' }
     ]},
     osa: { title: 'Office of Student Affairs — All Work', tint: 'inst-1', photos: [
       { name: 'OSA Communications Office', desc: "Content creator across AUB's official communication channels, 2023–present." }
